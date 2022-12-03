@@ -2,7 +2,7 @@ def read_integer_between_numbers(prompt, mini, maximum):
     while True:
         try:
             users_input = int(input(prompt))
-            if maximum <= users_input >= mini:
+            if users_input >= mini or users_input <= maximum:
                 return users_input
             else:
                 print(f"Numbers from {mini} to {maximum} only.")
@@ -36,6 +36,7 @@ def runners_data():
     for line in lines:
         if line != "\n":
             split_line = line.split(",")
+            print(split_line)
             runners_name.append(split_line[0])
             id = split_line[1].strip("\n")
             runners_id.append(id)
