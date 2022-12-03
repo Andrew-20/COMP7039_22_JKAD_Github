@@ -36,7 +36,6 @@ def runners_data():
     for line in lines:
         if line != "\n":
             split_line = line.split(",")
-            print(split_line)
             runners_name.append(split_line[0])
             id = split_line[1].strip("\n")
             runners_id.append(id)
