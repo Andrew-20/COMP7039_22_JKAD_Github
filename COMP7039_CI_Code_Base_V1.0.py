@@ -121,6 +121,21 @@ def competitors_by_county(name, id):
     for i in range(len(name)):
         if id[i].startswith("KY"):
             print(f"{name[i]} ({id[i]})")
+    print("Waterford runners")
+    print("=" * 20)
+    for i in range(len(name)):
+        if id[i].startswith("WD"):
+            print(f"{name[i]} ({id[i]})")
+    print("Limerick runners")
+    print("=" * 20)
+    for i in range(len(name)):
+        if id[i].startswith("LK"):
+            print(f"{name[i]} ({id[i]})")
+    print("Tipperary runners")
+    print("=" * 20)
+    for i in range(len(name)):
+        if id[i].startswith("TP"):
+            print(f"{name[i]} ({id[i]})")
 
 
 def reading_race_results(location):
