@@ -238,7 +238,7 @@ def main():
             id, time_taken, venue = race_results(races_location)
             fastest_runner = winner_of_race(id, time_taken)
             display_races(id, time_taken, venue, fastest_runner)
-        elif input_menu != 2:
+        elif input_menu == 2:
             users_venue(races_location, runners_id)
         elif input_menu == 3:
             competitors_by_county(runners_name, runners_id)
