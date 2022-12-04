@@ -129,9 +129,10 @@ def reading_race_results(location):
     id = []
     time_taken = []
     for line in lines:
-        split_line = line.split(",".strip("\n"))
-        id.append(split_line[0])
-        time_taken.append(int(split_line[1].strip("\n")))
+        if line != "\n":
+            split_line = line.split(",".strip("\n"))
+            id.append(split_line[0])
+            time_taken.append(int(split_line[1].strip("\n")))
     return id, time_taken
 
 
