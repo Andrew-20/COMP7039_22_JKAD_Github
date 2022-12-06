@@ -253,7 +253,7 @@ def main():
     races_location, races_location_estimaed_times = race_venues()
     runners_name, runners_id = runners_data()
     MENU = "1. Show the results for a race \n2. Add results for a race \n3. Show all competitors by county " \
-           "\n4. Show the winner of each race \n5. Show all the race times for one competitor " \
+           "\n4. Show the podium-places for each race \n5. Show all the race times for one competitor " \
            "\n6. Show all competitors who have won a race \n7. Quit \n>>> "
     input_menu = read_integer_between_numbers(MENU, 1, 7)
 
