@@ -117,32 +117,16 @@ def updating_races_file(races_location, races_location_estimated_time):
     connection.close()
 
 
-def competitors_county(name, id):
-    print("\nCork runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("CK"):
-            print(f"{name[i]} ({id[i]})")
-    print("\nKerry runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("KY"):
-            print(f"{name[i]} ({id[i]})")
-    print("\nWaterford runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("WD"):
-            print(f"{name[i]} ({id[i]})")
-    print("\nLimerick runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("LK"):
-            print(f"{name[i]} ({id[i]})")
-    print("\nTipperary runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("TP"):
-            print(f"{name[i]} ({id[i]})")
+def competitors_by_county(name, id):
+    counties = ["Cork", "Kerry", "Waterford", "Limerick", "Tipperary"]
+    counties_abbreviated = ["CK", "KY", "WD", "LK", "TP"]
+    for i in range(len(counties)):
+        current_county = counties_abbreviated[i]
+        print(f"\n{counties[i]} runners")
+        print("=" * 20)
+        for j in range(len(name)):
+            if id[j].startswith(current_county):
+                print(f"{name[j]} ({id[j]})")
 
 
 def reading_race_results(location):
@@ -263,7 +247,7 @@ def main():
         elif input_menu == 2:
             users_venue(races_location, runners_id, races_location_estimaed_times)
         elif input_menu == 3:
-            competitors_county(runners_name, runners_id)
+            competitors_by_county(runners_name, runners_id)
         elif input_menu == 4:
             displaying_winners_of_each_race(races_location)
         elif input_menu == 5:
