@@ -117,8 +117,7 @@ def updating_races_file(races_location, races_location_estimated_time):
     connection.close()
 
 
-
-def competitors_by_county(name, id):
+def competitors_county(name, id):
     print("\nCork runners")
     print("=" * 20)
     for i in range(len(name)):
@@ -264,7 +263,7 @@ def main():
         elif input_menu == 2:
             users_venue(races_location, runners_id, races_location_estimaed_times)
         elif input_menu == 3:
-            competitors_by_county(runners_name, runners_id)
+            competitors_county(runners_name, runners_id)
         elif input_menu == 4:
             displaying_winners_of_each_race(races_location)
         elif input_menu == 5:
