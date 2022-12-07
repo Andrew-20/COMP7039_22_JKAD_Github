@@ -76,7 +76,7 @@ def winner_of_race(id, time_taken):
 def display_races(id, time_taken, venue, fastest_runner):
     MINUTE = 60
     print(f"Results for {venue}")
-    print(f"="*37)
+    print("=" * 37)
     minutes = []
     seconds = []
     for i in range(len(time_taken)):
@@ -108,16 +108,15 @@ def users_venue(races_location, runners_id, races_location_estimated_time):
 
 
 def updating_races_file(races_location, races_location_estimated_time):
-    connection = open(f"Races.txt", "r+")
+    connection = open("Races.txt", "r+")
     print(races_location)
-    races_location_estimated_time = [i.replace('\n','') for i in races_location_estimated_time]
+    races_location_estimated_time = [i.replace('\n', '') for i in races_location_estimated_time]
     print(races_location)
     for i in range(len(races_location)):
-        print(races_location[i] + "," +races_location_estimated_time[i], file=connection)
-        # print(print(races_location), file=connection)
+        print(races_location[i] + "," + races_location_estimated_time[i], file=connection)
     connection.close()
-# q how to unstage commit
-# a 
+
+
 
 def competitors_by_county(name, id):
     print("\nCork runners")
@@ -190,7 +189,7 @@ def relevant_runner_info(runners_name, runners_id):
         print(f"{i + 1}: {runners_name[i]}")
     user_input = read_integer_between_numbers("Which Runner > ", 1, len(runners_name))
     runner = runners_name[user_input - 1]
-    id = runners_id[user_input -1]
+    id = runners_id[user_input - 1]
     return runner, id
 
 
@@ -216,7 +215,7 @@ def sorting_where_runner_came_in_race(location, time):
 
 def displaying_race_times_one_competitor(races_location, runner, id):
     print(f"{runner} ({id})")
-    print(f"-"*35)
+    print("-" * 35)
     for i in range(len(races_location)):
         time_taken = reading_race_results_of_relevant_runner(races_location[i], id)
         if time_taken is not None:
@@ -234,8 +233,8 @@ def finding_name_of_winner(fastest_runner, id, runners_name):
 
 
 def displaying_runners_who_have_won_at_least_one_race(races_location, runners_name, runners_id):
-    print(f"The following runners have all won at least one race:")
-    print(f"-" * 55)
+    print("The following runners have all won at least one race:")
+    print("-" * 55)
     winners = []
     runners = []
     for i, location in enumerate(races_location):
