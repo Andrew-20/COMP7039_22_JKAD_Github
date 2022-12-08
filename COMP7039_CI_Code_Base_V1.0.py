@@ -134,15 +134,26 @@ def updating_races_file(races_location, races_location_estimated_time):
 
 
 def competitors_by_county(name, id):
-    counties = ["Cork", "Kerry", "Waterford", "Limerick", "Tipperary"]
-    counties_abbreviated = ["CK", "KY", "WD", "LK", "TP"]
+
+    with open("County_codes.txt") as input:
+        lines = input.readlines()
+    counties = []
+    counties_abbreviated = []
+    for line in lines:
+        if line != "\n":
+            split_line = line.split(",")
+            counties.append(split_line[0])
+            counties_abbreviated.append(split_line[1].strip())
+    counties_abbreviated = [i.replace('\n', '') for i in counties_abbreviated]
+
     for i in range(len(counties)):
         current_county = counties_abbreviated[i]
-        print(f"\n{counties[i]} runners")
-        print("=" * 20)
-        for j in range(len(name)):
-            if id[j].startswith(current_county):
-                print(f"{name[j]} ({id[j]})")
+        if any(x.startswith(current_county) for x in id):
+            print(f"\n{counties[i]} runners")
+            print("=" * 20)
+            for j in range(len(name)):
+                if id[j].startswith(current_county):
+                    print(f"{name[j]} ({id[j]})")
 
 
 def reading_race_results(location):
