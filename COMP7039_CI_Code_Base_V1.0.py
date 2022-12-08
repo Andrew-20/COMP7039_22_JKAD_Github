@@ -184,6 +184,21 @@ def displaying_podium_places_of_each_race(races_location):
         print(f"{races_location[i]:<18s}{podium[0]:<19s}{podium[1]:<22s}{podium[2]}")
 
 
+def displaying_not_podium_place_competitors(races_location, runners_name, runners_id):
+    podium_places = []
+    for i in range(len(races_location)):
+        id, time_taken = reading_race_results(races_location[i])
+        podium = podium_positions(id, time_taken)
+        for j in range(len(podium)):
+            if podium[j] not in podium_places:
+                podium_places.append(podium[j])
+    print("Name              ID")
+    print("=" * 25)
+    for k in range(len(runners_id)):
+        if runners_id[k] not in podium_places:
+            print(f"{runners_name[k]:<18s}{runners_id[k]}")
+
+
 def relevant_runner_info(runners_name, runners_id):
     for i in range(len(runners_name)):
         print(f"{i + 1}: {runners_name[i]}")
@@ -277,7 +292,7 @@ def main():
         elif input_menu == 6:
             displaying_runners_who_have_won_at_least_one_race(races_location, runners_name, runners_id)
         elif input_menu == 7:
-            print("New function will go here")
+            displaying_not_podium_place_competitors(races_location, runners_name, runners_id)
         print()
         input_menu = read_integer_between_numbers(MENU, 1, 8)
     updating_races_file(races_location, races_location_estimated_times)
