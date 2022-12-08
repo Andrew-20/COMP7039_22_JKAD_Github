@@ -163,9 +163,10 @@ def reading_race_results_of_relevant_runner(location, runner_id):
     id = []
     time_taken = []
     for line in lines:
-        split_line = line.split(",".strip("\n"))
-        id.append(split_line[0])
-        time_taken.append(int(split_line[1].strip("\n")))
+        if line != "\n":
+            split_line = line.split(",".strip("\n"))
+            id.append(split_line[0])
+            time_taken.append(int(split_line[1].strip("\n")))
     for i in range(len(id)):
         if runner_id == id[i]:
             time_relevant_runner = time_taken[i]
@@ -202,13 +203,16 @@ def sorting_where_runner_came_in_race(location, time):
     with open(f"{location}.txt") as input_type:
         lines = input_type.readlines()
     time_taken = []
+    number_in_race = 0
     for line in lines:
-        split_line = line.split(",".strip("\n"))
-        t = int(split_line[1].strip("\n"))
-        time_taken.append(t)
+        if line != "\n":
+            split_line = line.split(",".strip("\n"))
+            t = int(split_line[1].strip("\n"))
+            time_taken.append(t)
+            number_in_race += 1
 
     time_taken.sort()
-    return time_taken.index(time) + 1, len(lines)
+    return time_taken.index(time) + 1, number_in_race
 
 
 def displaying_race_times_one_competitor(races_location, runner, id):
