@@ -260,7 +260,7 @@ def main():
            "podium-position in any race. \n8. Quit \n>>> "
     input_menu = read_integer_between_numbers(MENU, 1, 7)
 
-    while input_menu != 7:
+    while input_menu != 8:
         if input_menu == 1:
             id, time_taken, venue = race_results(races_location)
             fastest_runner = winner_of_race(id, time_taken)
@@ -276,8 +276,10 @@ def main():
             displaying_race_times_one_competitor(races_location, runner, id)
         elif input_menu == 6:
             displaying_runners_who_have_won_at_least_one_race(races_location, runners_name, runners_id)
+        elif input_menu == 7:
+            print("New function will go here")
         print()
-        input_menu = read_integer_between_numbers(MENU, 1, 7)
+        input_menu = read_integer_between_numbers(MENU, 1, 8)
     updating_races_file(races_location, races_location_estimated_times)
 
 
