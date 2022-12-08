@@ -73,6 +73,21 @@ def winner_of_race(id, time_taken):
     return winner
 
 
+def podium_positions(id, time_taken):
+    result = ""
+    podium = []
+    for j in range(3):
+        quickest_time = min(time_taken)
+        for i in range(len(id)):
+            if quickest_time == time_taken[i]:
+                result = id[i]
+                id.pop(i)
+                time_taken.pop(i)
+                break
+        podium.append(result)
+    return podium
+
+
 def display_races(id, time_taken, venue, fastest_runner):
     MINUTE = 60
     print(f"Results for {venue}")
@@ -158,13 +173,13 @@ def reading_race_results_of_relevant_runner(location, runner_id):
     return None
 
 
-def displaying_winners_of_each_race(races_location):
-    print("Venue             Looser")
-    print("="*24)
+def displaying_podium_places_of_each_race(races_location):
+    print("Venue             Winner             2nd-Place             3rd-Place")
+    print("=" * 80)
     for i in range(len(races_location)):
         id, time_taken = reading_race_results(races_location[i])
-        fastest_runner = winner_of_race(id, time_taken)
-        print(f"{races_location[i]:<18s}{fastest_runner}")
+        podium = podium_positions(id, time_taken)
+        print(f"{races_location[i]:<18s}{podium[0]:<19s}{podium[1]:<22s}{podium[2]}")
 
 
 def relevant_runner_info(runners_name, runners_id):
@@ -249,7 +264,7 @@ def main():
         elif input_menu == 3:
             competitors_by_county(runners_name, runners_id)
         elif input_menu == 4:
-            displaying_winners_of_each_race(races_location)
+            displaying_podium_places_of_each_race(races_location)
         elif input_menu == 5:
             runner, id = relevant_runner_info(runners_name, runners_id)
             displaying_race_times_one_competitor(races_location, runner, id)
