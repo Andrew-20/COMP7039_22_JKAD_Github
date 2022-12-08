@@ -35,6 +35,7 @@ def runners_data():
     runners_id = []
     for line in lines:
         if line != "\n":
+            line = line.strip()
             split_line = line.split(",")
             runners_name.append(split_line[0])
             id = split_line[1].strip("\n")
@@ -251,7 +252,7 @@ def displaying_runners_who_have_won_at_least_one_race(races_location, runners_na
 
 
 def main():
-    races_location, races_location_estimaed_times = race_venues()
+    races_location, races_location_estimated_times = race_venues()
     runners_name, runners_id = runners_data()
     MENU = "1. Show the results for a race \n2. Add results for a race \n3. Show all competitors by county " \
            "\n4. Show the podium-places for each race \n5. Show all the race times for one competitor " \
@@ -264,7 +265,7 @@ def main():
             fastest_runner = winner_of_race(id, time_taken)
             display_races(id, time_taken, venue, fastest_runner)
         elif input_menu == 2:
-            users_venue(races_location, runners_id, races_location_estimaed_times)
+            users_venue(races_location, runners_id, races_location_estimated_times)
         elif input_menu == 3:
             competitors_by_county(runners_name, runners_id)
         elif input_menu == 4:
@@ -276,7 +277,7 @@ def main():
             displaying_runners_who_have_won_at_least_one_race(races_location, runners_name, runners_id)
         print()
         input_menu = read_integer_between_numbers(MENU, 1, 7)
-    updating_races_file(races_location, races_location_estimaed_times)
+    updating_races_file(races_location, races_location_estimated_times)
 
 
 main()
